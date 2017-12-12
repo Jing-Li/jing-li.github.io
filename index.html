@@ -34,8 +34,7 @@ var line = d3.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.housesNumber); });
 
-d3.tsv("data.tsv", type, function(error, data) {
-  if (error) throw error;
+d3.csv("data.csv", function(data) {
 
   var cities = data.columns.slice(1).map(function(id) {
     return {
