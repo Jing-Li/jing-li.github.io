@@ -39,7 +39,7 @@ d3.csv("data.csv", function(data) {
     return {
       id: id,
       values: data.map(function(d) {
-        return {date: d.date, housesNumber: d[id]};
+        return {date: parseTime(d.date), housesNumber: d[id]};
       })
     };
   });
@@ -86,11 +86,5 @@ d3.csv("data.csv", function(data) {
       .style("font", "10px sans-serif")
       .text(function(d) { return d.id; });
 });
-
-function type(d, _, columns) {
-  d.date = parseTime(d.date);
-  for (var i = 1, n = columns.length, c; i < n; ++i) d[c = columns[i]] = +d[c];
-  return d;
-}
 
 </script>
