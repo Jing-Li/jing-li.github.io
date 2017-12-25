@@ -68,14 +68,15 @@ d3.csv("data.csv", function(error, data) {
   svg.append("path")
       .data([data])
       .attr("class", "line")
-      .attr("d", valueline);
+      .attr("d", valueline)
+      .style("stroke", function(d) { return z(d.BeiJing); });
 
   // Add the valueline2 path.
   svg.append("path")
       .data([data])
       .attr("class", "line")
-      .style("stroke", "red")
-      .attr("d", valueline2);
+      .style("stroke", function(d) { return z(d.Shenzhen); })
+      .attr("d", valueline2)
 
   // Add the X Axis
   svg.append("g")
@@ -84,7 +85,13 @@ d3.csv("data.csv", function(error, data) {
 
   // Add the Y Axis
   svg.append("g")
-      .call(d3.axisLeft(y));
+      .call(d3.axisLeft(y))
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("fill", "#000")
+      .text("Houses No.");
 
 });
 
