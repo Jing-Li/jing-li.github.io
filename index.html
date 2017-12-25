@@ -27,6 +27,7 @@ var parseTime = d3.timeParse(f);
 // set the ranges
 var x = d3.scaleTime().range([0, width]);
 var y = d3.scaleLinear().range([height, 0]);
+var z = d3.scaleOrdinal(d3.schemeCategory10);
 
 // define the 1st line
 var valueline = d3.line()
